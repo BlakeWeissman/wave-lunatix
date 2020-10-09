@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import {NavLink, BrowserRouter} from 'react-router-dom';
+import {Hero} from './components/Hero/Hero';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           O
         </div>
       </div>
+      <Hero title="TEST" imgFilename="logo.png" />
     </BrowserRouter>
   );
 }

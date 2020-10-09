@@ -1,9 +1,13 @@
+@import "index.scss";
+
 #navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 30px 60px;
+  padding: 30px $left-right-padding;
   background: #ffffff;
+  position: fixed;
+  width: 100%;
   img {
     width: 210px;
   }
