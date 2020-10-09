@@ -8,11 +8,96 @@
   background: #ffffff;
   position: fixed;
   width: 100%;
+  z-index: 1;
   img {
     width: 210px;
   }
   a {
     color: #636363;
     margin: 0 45px;
+  }
+}
+
+#categories div {
+  width: 164px;
+  background: red;
+  margin-right: 20px;
+  height: 94px;
+  border-radius: 14px;
+  padding: 21px 11px;
+}
+
+#categories, #events {
+  display: flex;
+  padding: 0 $left-right-padding;
+  justify-content: center;
+  div {
+    color: #ffffff;
+  }
+}
+
+#events div {
+  width: 245px;
+  background: red;
+  margin-right: 20px;
+  height: 132px;
+  border-radius: 21px;
+  padding: 24px 14px;
+}
+
+.hr-container {
+  padding: 0 $left-right-padding;
+  width: 100%;
+}
+
+.cta {
+  padding: 0 $left-right-padding + 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h3 {
+    font-family: 'Padauk', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 29px;
+  }
+}
+
+#video-container {
+  display: flex;
+  background: #e4e5e9;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 55px $left-right-padding;
+  img {
+    max-width: 500px;
+    margin-bottom: 40px;
+  }
+}
+
+footer {
+  background: #3c3c3a;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px $left-right-padding;
+  #apps {
+    img {
+      width: 151px;
+      margin: 0 10px;
+      border-radius: 6px;
+    }
+  }
+  .largeInput {
+    margin: 56px 0;
+  }
+  p {
+    font-family: 'Padauk', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
   }
 }
