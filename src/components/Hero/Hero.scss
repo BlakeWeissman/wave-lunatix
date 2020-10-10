@@ -1,15 +1,23 @@
 @import "../../index.scss";
 
 .hero {
-  padding: 0 $left-right-padding;
   height: 395px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   background-size: cover !important;
+  & > div {
+    max-width: $max-width;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    height: 100%;
+  }
   h1 {
+    margin: 0;
     color: #ffffff;
     font-family: 'Padauk', sans-serif;
-    font-size: 52px;
+    font-size: 70px;
+    width: 100%;
+    margin-bottom: 60px;
   }
 }

@@ -1,75 +1,94 @@
 @import "index.scss";
 
 #navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 30px $left-right-padding;
+  padding: 30px 0;
   background: #ffffff;
   position: fixed;
   width: 100%;
   z-index: 1;
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: $max-width;
+    margin: auto;
+    div a {
+      color: #636363;
+      margin: 0 45px;
+      text-transform: uppercase;
+    }
+  }
   img {
     width: 210px;
   }
-  div a {
-    color: #636363;
-    margin: 0 45px;
-  }
-}
-
-#categories div {
-  width: 164px;
-  background: red;
-  margin-right: 20px;
-  height: 94px;
-  border-radius: 14px;
-  padding: 21px 11px;
 }
 
 #categories, #events {
   display: flex;
-  padding: 0 $left-right-padding;
-  justify-content: center;
+  justify-content: space-between;
+  max-width: $max-width;
+  margin: auto;
   div {
     color: #ffffff;
+    white-space: nowrap;
   }
 }
 
-#events div {
-  width: 245px;
-  background: red;
-  margin-right: 20px;
-  height: 132px;
-  border-radius: 21px;
-  padding: 24px 14px;
+#categories {
+  margin-top: 78px;
+  margin-bottom: 42px;
+  div {
+    width: 164px;
+    background: red;
+    height: 94px;
+    border-radius: 14px;
+    padding: 21px 11px;
+  }
+}
+
+#events {
+  margin-bottom: 54px;
+  div {
+    width: 245px;
+    background: red;
+    height: 132px;
+    border-radius: 21px;
+    padding: 24px 14px;
+  }
 }
 
 .hr-container {
-  padding: 0 $left-right-padding;
-  width: 100%;
+  max-width: $max-width;
+  margin: auto;
 }
 
 .cta {
-  padding: 0 $left-right-padding + 15px;
+  max-width: $max-width;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 20px auto;
   h3 {
     font-family: 'Padauk', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 29px;
+    margin: 0;
   }
 }
 
 #video-container {
   display: flex;
   background: #e4e5e9;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 55px $left-right-padding;
+  padding: 55px 0;
+  div {
+    max-width: $max-width;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
   img {
     max-width: 500px;
     margin-bottom: 40px;
@@ -84,11 +103,16 @@ footer {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 60px $left-right-padding;
+  padding: 60px 0;
+  & > div {
+    max-width: $max-width;
+  }
   #apps {
+    a {
+      margin: 0 10px;
+    }
     img {
       width: 151px;
-      margin: 0 10px;
       border-radius: 6px;
     }
   }
@@ -114,6 +138,7 @@ footer {
   }
   #social {
     display: flex;
+    justify-content: center;
     a {
       $font-size: 27px;
       $width-height: $font-size * 1.555555;

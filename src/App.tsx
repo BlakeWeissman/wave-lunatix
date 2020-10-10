@@ -29,25 +29,28 @@ export class App extends Component<{}, {
         <div 
           id="navbar" 
           ref={this.navbar}>
-          <Link to="">
-            <img src={require('./assets/logo.png')} />
-          </Link>
           <div>
-            <NavLink to="">
-              Events
-            </NavLink>
-            <NavLink to="/sports">
-              Sports
-            </NavLink>
-          </div>
-          <div>
-            O
+            <Link to="">
+              <img src={require('./assets/logo.png')} />
+            </Link>
+            <div>
+              <NavLink to="">
+                Events
+              </NavLink>
+              <NavLink to="/sports">
+                Sports
+              </NavLink>
+            </div>
+            <div>
+              O
+            </div>
           </div>
         </div>
         <div style={this.state?.pageWrapperStyle}>
           <Switch>
             <Route exact path="/">
               <Hero 
+                centerText
                 title="Magnanimus Tour" 
                 imgFilename="purple-short.jpg" />
               <div id="categories">
@@ -86,12 +89,14 @@ export class App extends Component<{}, {
                 }
               </div>
               <div id="video-container">
-                <img src={require('./assets/video.png')} />        
-                <Link to="/subscribe">
-                  <button>
-                    Learn More
-                  </button>
-                </Link>
+                <div>
+                  <img src={require('./assets/video.png')} />        
+                  <Link to="/subscribe">
+                    <button>
+                      Learn More
+                    </button>
+                  </Link>
+                </div>
               </div>
             </Route>
 
@@ -140,50 +145,52 @@ export class App extends Component<{}, {
 
           </Switch>
           <footer>
-            <div id="apps">
-              <a 
-                href="https://www.apple.com/app-store/" 
-                target="_blank">
-                <img src={require('./assets/apple.jpg')} />        
-              </a>
-              <a 
-                href="https://play.google.com/store" 
-                target="_blank">
-                <img src={require('./assets/google.jpg')} />        
-              </a>
-            </div>
-            <LargeInput 
-              placeholder="Join our mailing list for exclusive access and promotions" 
-              addonText="Subscribe" />
-            <div id="venmo">
+            <div>
+              <div id="apps">
+                <a 
+                  href="https://www.apple.com/app-store/" 
+                  target="_blank">
+                  <img src={require('./assets/apple.jpg')} />        
+                </a>
+                <a 
+                  href="https://play.google.com/store" 
+                  target="_blank">
+                  <img src={require('./assets/google.jpg')} />        
+                </a>
+              </div>
+              <LargeInput 
+                placeholder="Join our mailing list for exclusive access and promotions" 
+                addonText="Subscribe" />
+              <div id="venmo">
+                <p>
+                  Powered by
+                </p>
+                <a 
+                  href="https://venmo.com/"
+                  target="_blank">
+                  <img src={require('./assets/venmo.png')} />        
+                </a>
+              </div>
               <p>
-                Powered by
+                About | Support | Terms And Conditions <br /> Copyright &#169; 2020 SI Tickets | All Rights Reserved
               </p>
-              <a 
-                href="https://venmo.com/"
-                target="_blank">
-                <img src={require('./assets/venmo.png')} />        
-              </a>
-            </div>
-            <p>
-              About | Support | Terms And Conditions <br /> Copyright &#169; 2020 SI Tickets | All Rights Reserved
-            </p>
-            <div id="social">
-              <a
-                href="https://twitter.com/"
-                target="_blank">
-                <FontAwesomeIcon icon={faTwitter} />
-              </a>
-              <a
-                href="https://facebook.com/"
-                target="_blank">
-                <FontAwesomeIcon icon={faFacebookF} />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank">
-                <FontAwesomeIcon icon={faInstagram} />
-              </a>
+              <div id="social">
+                <a
+                  href="https://twitter.com/"
+                  target="_blank">
+                  <FontAwesomeIcon icon={faTwitter} />
+                </a>
+                <a
+                  href="https://facebook.com/"
+                  target="_blank">
+                  <FontAwesomeIcon icon={faFacebookF} />
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank">
+                  <FontAwesomeIcon icon={faInstagram} />
+                </a>
+              </div>
             </div>
           </footer>
         </div>
