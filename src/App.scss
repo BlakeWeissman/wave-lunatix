@@ -101,3 +101,56 @@ footer {
     font-size: 20px;
   }
 }
+
+#subscribe {
+  padding-top: 150px;
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("assets/purple.jpg") 50% 0px repeat-y fixed;
+  h1 {
+    font-family: 'Padauk', sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 12px;
+    margin-left: 20px;
+  }
+  & > div {
+    max-width: 610px;
+    margin: auto;
+    & > div {
+      background: rgba(255, 255, 255, 0.8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      padding: 24px 29px;
+      & > div:not(#neo-input) {
+        display: flex;
+        width: 100%;
+        #neo-input:first-of-type {
+          margin-right: 16px;
+        }
+      }
+    }
+  }
+  #neo-input {
+    margin: 5px 0;
+    width: 100%;
+  }
+  span {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 22px;
+    input {
+      margin-right: 12px;
+    }
+  }
+  label {
+    font-family: 'Padauk', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+  }
+}

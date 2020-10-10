@@ -61,11 +61,12 @@ a {
   flex-direction: column;
 }
 
-button {
+*:not(#large-input > button) button {
   background: #558006;
   border: none;
   color: #fff;
   border-radius: 20px;
   padding: 9px 19px;
   font-size: 17px;
+  @include box-shadow((0px 0px 4px 2px #ffffff, 2px 2px 6px 1px #000000));
 }
