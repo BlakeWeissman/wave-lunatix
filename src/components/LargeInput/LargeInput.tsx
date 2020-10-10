@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 export class LargeInput extends Component<{
   placeholder?: string,
-  addonText: string
+  addonText: string | JSX.Element,
   disableHyperlink?: boolean
 }> {
   render() {

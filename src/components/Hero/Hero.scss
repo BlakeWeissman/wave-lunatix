@@ -3,10 +3,10 @@
 .hero {
   padding: 0 $left-right-padding;
   height: 395px;
-  margin-top: 200px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background-size: cover !important;
   h1 {
     color: #ffffff;
     font-family: 'Padauk', sans-serif;

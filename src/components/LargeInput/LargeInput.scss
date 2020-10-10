@@ -7,7 +7,7 @@ $border-radius: 15px;
   height: 58px;
   border-radius: $border-radius;
   position: relative;
-  width: 500px;
+  width: 600px;
   div:first-of-type {
     position: absolute;
     z-index: 0;
@@ -30,10 +30,12 @@ $border-radius: 15px;
     border-radius: 0 $border-radius $border-radius 0;
     color: #ffffff;
     background: $red;
-    white-space: nowrap;
-    font-family: 'Padauk', sans-serif;
-    font-size: 22px;
-    font-weight: 400;
+    &, span {
+      white-space: nowrap;
+      font-family: 'Padauk', sans-serif;
+      font-size: 22px;
+      font-weight: 400;
+    }
     padding: 0px 24px 0px 18px;
     display: flex;
     align-items: center;
