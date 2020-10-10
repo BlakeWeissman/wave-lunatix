@@ -12,13 +12,15 @@ function App() {
   return (
     <BrowserRouter>
       <div id="navbar">
-        <img src={require('./assets/logo.png')} />
+        <Link to="">
+          <img src={require('./assets/logo.png')} />
+        </Link>
         <div>
-          <NavLink to="/nba">
-            NBA
+          <NavLink to="">
+            Events
           </NavLink>
-          <NavLink to="/test">
-            Test
+          <NavLink to="/sports">
+            Sports
           </NavLink>
         </div>
         <div>
@@ -68,14 +70,16 @@ function App() {
           </div>
           <div id="video-container">
             <img src={require('./assets/video.png')} />        
-            <button>
-              Learn More
-            </button>
+            <Link to="/subscribe">
+              <button>
+                Learn More
+              </button>
+            </Link>
           </div>
         </Route>
 
-        <Route path="/nba">
-          <Hero title="NBA" imgFilename="sports.jpg" />
+        <Route path="/sports">
+          <Hero title="Sports" imgFilename="sports.jpg" />
 
         </Route>
 
@@ -104,9 +108,11 @@ function App() {
                     I Agree to the Terms of Use and Privacy Policy
                   </label>
                 </span>
-                <button>
-                  Sign Up
-                </button>
+                <Link to="">
+                  <button>
+                    Sign Up
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -118,33 +124,51 @@ function App() {
       </Switch>
       <footer>
         <div id="apps">
-          <img src={require('./assets/apple.jpg')} />        
-          <img src={require('./assets/google.jpg')} />        
+          <a 
+            href="https://www.apple.com/app-store/" 
+            target="_blank">
+            <img src={require('./assets/apple.jpg')} />        
+          </a>
+          <a 
+            href="https://play.google.com/store" 
+            target="_blank">
+            <img src={require('./assets/google.jpg')} />        
+          </a>
         </div>
         <LargeInput 
           placeholder="Join our mailing list for exclusive access and promotions" 
-          buttonText="Subscribe" />
+          addonText="Subscribe" />
         <div id="venmo">
           <p>
             Powered by
           </p>
-          <img src={require('./assets/venmo.png')} />        
+          <a 
+            href="https://venmo.com/"
+            target="_blank">
+            <img src={require('./assets/venmo.png')} />        
+          </a>
         </div>
         <p>
           About | Support | Terms And Conditions <br /> Copyright &#169; 2020 SI Tickets | All Rights Reserved
         </p>
         <div id="social">
-          <a>
+          <a
+            href="https://twitter.com/"
+            target="_blank">
             <FontAwesomeIcon icon={faTwitter} />
           </a>
-          <a>
+          <a
+            href="https://facebook.com/"
+            target="_blank">
             <FontAwesomeIcon icon={faFacebookF} />
           </a>
-          <a>
+          <a
+            href="https://instagram.com"
+            target="_blank">
             <FontAwesomeIcon icon={faInstagram} />
           </a>
         </div>
-      </footer>
+       </footer>
     </BrowserRouter>
   );
 }

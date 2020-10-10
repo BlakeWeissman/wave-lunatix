@@ -14,7 +14,9 @@ export class Hero extends Component<{
         <h1>
           {this.props.title}
         </h1>
-        <LargeInput buttonText="New York, NY" />
+        <LargeInput 
+          addonText="New York, NY"
+          disableHyperlink />
       </div>
     );
   }
