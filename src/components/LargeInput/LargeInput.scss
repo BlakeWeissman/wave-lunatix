@@ -20,8 +20,13 @@ $border-radius: 15px;
   input {
     border-radius: $border-radius 0 0 $border-radius;
     width: 100%;
+    text-overflow: ellipsis;
+    font-family: 'Padauk', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    padding-left: 16px;
   }
-  button {
+  a {
     border-radius: 0 $border-radius $border-radius 0;
     color: #ffffff;
     background: $red;
@@ -30,6 +35,8 @@ $border-radius: 15px;
     font-size: 22px;
     font-weight: 400;
     padding: 0px 24px 0px 18px;
+    display: flex;
+    align-items: center;
   }
   *:not(div) {
     outline: none;

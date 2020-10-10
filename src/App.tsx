@@ -1,9 +1,11 @@
 import React from 'react';
 import './App.scss';
-import {NavLink, BrowserRouter, Switch, Route} from 'react-router-dom';
+import {NavLink, BrowserRouter, Switch, Route, Link} from 'react-router-dom';
 import {Hero} from './components/Hero/Hero';
 import {LargeInput} from './components/LargeInput/LargeInput';
 import {NeoInput} from './components/NeoInput/NeoInput';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faTwitter, faFacebookF, faInstagram} from '@fortawesome/free-brands-svg-icons'
 
 function App() {
   
@@ -26,7 +28,9 @@ function App() {
       <Switch>
 
         <Route exact path="/">
-          <Hero title="Magnanimus Tour" imgFilename="purple-short.jpg" />
+          <Hero 
+            title="Magnanimus Tour" 
+            imgFilename="purple-short.jpg" />
           <div id="categories">
             {
               Array.from(Array(6), (e, i) => {
@@ -45,9 +49,11 @@ function App() {
             <h3>
               Trending
             </h3>
-            <button>
-              View All
-            </button>
+            <Link to="/subscribe">
+              <button>
+                View All
+              </button>
+            </Link>
           </div>
           <div id="events">
             {
@@ -115,10 +121,29 @@ function App() {
           <img src={require('./assets/apple.jpg')} />        
           <img src={require('./assets/google.jpg')} />        
         </div>
-        <LargeInput />
+        <LargeInput 
+          placeholder="Join our mailing list for exclusive access and promotions" 
+          buttonText="Subscribe" />
+        <div id="venmo">
+          <p>
+            Powered by
+          </p>
+          <img src={require('./assets/venmo.png')} />        
+        </div>
         <p>
           About | Support | Terms And Conditions <br /> Copyright &#169; 2020 SI Tickets | All Rights Reserved
         </p>
+        <div id="social">
+          <a>
+            <FontAwesomeIcon icon={faTwitter} />
+          </a>
+          <a>
+            <FontAwesomeIcon icon={faFacebookF} />
+          </a>
+          <a>
+            <FontAwesomeIcon icon={faInstagram} />
+          </a>
+        </div>
       </footer>
     </BrowserRouter>
   );

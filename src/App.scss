@@ -93,12 +93,41 @@ footer {
     }
   }
   .largeInput {
-    margin: 56px 0;
+    margin-bottom: 40px;
+    margin-top: 56px;
   }
   p {
     font-family: 'Padauk', sans-serif;
     font-weight: 400;
     font-size: 20px;
+    margin-bottom: 14px;
+  }
+  #venmo {
+    margin-bottom: 8px;
+    img {
+      width: 106px;
+    }
+    p {
+      margin: 0;
+      margin-bottom: 7px;
+    }
+  }
+  #social {
+    display: flex;
+    a {
+      $font-size: 27px;
+      $width-height: $font-size * 1.555555;
+      font-size: 27px;
+      border: 2px solid white;
+      border-radius: 100%;
+      display: flex;
+      width: $width-height;
+      height: $width-height;
+      margin: 0 10px;
+      * {
+        margin: auto;
+      }
+    }
   }
 }
 
