@@ -34,27 +34,36 @@
   }
 }
 
+@mixin divBackgroundsFromList($colors) {
+  @for $i from 1 through length($colors) {
+    div:nth-of-type(#{$i}) {
+      background: nth($colors, $i);
+    }
+  }  
+}
+
 #categories {
   margin-top: 78px;
   margin-bottom: 42px;
   div {
     width: 164px;
-    background: red;
     height: 94px;
     border-radius: 14px;
     padding: 21px 11px;
+      
   }
+  @include divBackgroundsFromList((#1e911c, #76b600, #659908, #84ad37, #4bad4a, #76c275));
 }
 
 #events {
   margin-bottom: 54px;
   div {
     width: 245px;
-    background: red;
     height: 132px;
     border-radius: 21px;
     padding: 24px 14px;
   }
+  @include divBackgroundsFromList((#690d3e, #230414, #a34076, #bb7099));
 }
 
 .hr-container {

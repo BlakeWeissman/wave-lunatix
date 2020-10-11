@@ -19,7 +19,9 @@ export class App extends Component<{}, {
 
   componentDidMount() {
     this.setState({
-      pageWrapperStyle: { paddingTop: this.navbar.current?.clientHeight},
+      pageWrapperStyle: { 
+        paddingTop: this.navbar.current?.clientHeight
+      },
     });
   }
 
@@ -56,9 +58,10 @@ export class App extends Component<{}, {
               <div id="categories">
                 {
                   Array.from(Array(6), (e, i) => {
+                    const categoryNumber = i + 1;
                     return (
-                      <div key={i}>
-                        Category {i}
+                      <div key={categoryNumber}>
+                        Category {categoryNumber}
                       </div>
                     );
                   })
@@ -80,9 +83,10 @@ export class App extends Component<{}, {
               <div id="events">
                 {
                   Array.from(Array(4), (e, i) => {
+                    const eventNumber = i + 1;
                     return (
-                      <div key={i}>
-                        Event {i}
+                      <div key={eventNumber}>
+                        Event {eventNumber}
                       </div>
                     );
                   })
