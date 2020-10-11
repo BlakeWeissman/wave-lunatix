@@ -6,6 +6,7 @@ import {LargeInput} from './components/LargeInput/LargeInput';
 import {NeoInput} from './components/NeoInput/NeoInput';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faTwitter, faFacebookF, faInstagram} from '@fortawesome/free-brands-svg-icons'
+import {DialogPage} from './components/DialogPage/DialogPage';
 
 export class App extends Component<{}, {
   pageWrapperStyle: CSSProperties
@@ -115,40 +116,38 @@ export class App extends Component<{}, {
 
             <Route path="/subscribe">
               <div id="subscribe">
-                <div>
-                <h1>
-                  Subscribe
-                </h1>
+                <DialogPage title="Subscribe">
                   <div>
-                    <div>
-                      <NeoInput placeholder="First Name" />
-                      <NeoInput placeholder="Last Name" />
-                    </div>
-                    <NeoInput placeholder="Email" />
-                    <NeoInput placeholder="User Name" />
-                    <NeoInput placeholder="Password" type="password" />
-                    <NeoInput placeholder="Repeat Password" type="password" />
-                    <span>
-                      <input 
-                        type="checkbox" 
-                        id="vehicle1" 
-                        name="vehicle1" 
-                        value="Bike" />
-                      <label htmlFor="vehicle1"> 
-                        I Agree to the Terms of Use and Privacy Policy
-                      </label>
-                    </span>
-                    <Link to="">
-                      <button>
-                        Sign Up
-                      </button>
-                    </Link>
+                    <NeoInput placeholder="First Name" />
+                    <NeoInput placeholder="Last Name" />
                   </div>
-                </div>
+                  <NeoInput placeholder="Email" />
+                  <NeoInput placeholder="User Name" />
+                  <NeoInput placeholder="Password" type="password" />
+                  <NeoInput placeholder="Repeat Password" type="password" />
+                  <span>
+                    <input 
+                      type="checkbox" 
+                      id="vehicle1" 
+                      name="vehicle1" 
+                      value="Bike" />
+                    <label htmlFor="vehicle1"> 
+                      I Agree to the Terms of Use and Privacy Policy
+                    </label>
+                  </span>
+                  <Link to="">
+                    <button>
+                      Sign Up
+                    </button>
+                  </Link>
+                </DialogPage>
               </div>
             </Route>
 
             <Route path="/cart">
+              <DialogPage>
+                Cart
+              </DialogPage>
             </Route>
 
           </Switch>
