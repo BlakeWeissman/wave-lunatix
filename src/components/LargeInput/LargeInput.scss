@@ -3,6 +3,7 @@
 $border-radius: 15px;
 
 .largeInput {
+  $font-size: 22px;
   display: flex;
   height: 58px;
   border-radius: $border-radius;
@@ -13,7 +14,7 @@ $border-radius: 15px;
     z-index: 0;
     pointer-events: none;
     width: 100%;
-    @include box-shadow(inset 0px 0px 8px 3px #000);
+    @include box-shadow(inset 0px 3px 14px 1px #000000);
     height: 100%;
     border-radius: $border-radius;
   }
@@ -23,25 +24,26 @@ $border-radius: 15px;
     text-overflow: ellipsis;
     font-family: 'Padauk', sans-serif;
     font-weight: 400;
-    font-size: 17px;
+    font-size: $font-size;
     padding-left: 16px;
+  }
+  *:not(div) {
+    outline: none;
+    border: none;
   }
   a {
     border-radius: 0 $border-radius $border-radius 0;
     color: #ffffff;
     background: $red;
+    border-bottom: #ffffff solid 3px;
     &, span {
       white-space: nowrap;
       font-family: 'Padauk', sans-serif;
-      font-size: 22px;
+      font-size: $font-size;
       font-weight: 400;
     }
     padding: 0px 24px 0px 18px;
     display: flex;
     align-items: center;
-  }
-  *:not(div) {
-    outline: none;
-    border: none;
   }
 }
