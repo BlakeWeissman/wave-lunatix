@@ -60,9 +60,11 @@ export class App extends Component<{}, {
                   Array.from(Array(6), (e, i) => {
                     const categoryNumber = i + 1;
                     return (
-                      <div key={categoryNumber}>
-                        Category {categoryNumber}
-                      </div>
+                      <Link to="/subscribe">
+                        <div key={categoryNumber}>
+                          Category {categoryNumber}
+                        </div>
+                      </Link>
                     );
                   })
                 }
@@ -85,9 +87,11 @@ export class App extends Component<{}, {
                   Array.from(Array(4), (e, i) => {
                     const eventNumber = i + 1;
                     return (
-                      <div key={eventNumber}>
-                        Event {eventNumber}
-                      </div>
+                      <Link to="/subscribe">
+                        <div key={eventNumber}>
+                          Event {eventNumber}
+                        </div>
+                      </Link>
                     );
                   })
                 }
