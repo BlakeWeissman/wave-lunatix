@@ -1,4 +1,4 @@
-import React, {Component, CSSProperties} from 'react';
+import React, {Component, CSSProperties, Props, FC, useState} from 'react';
 import './App.scss';
 import {NavLink, BrowserRouter, Switch, Route, Link} from 'react-router-dom';
 import {Hero} from './components/Hero/Hero';
@@ -7,11 +7,120 @@ import {NeoInput} from './components/NeoInput/NeoInput';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faTwitter, faFacebookF, faInstagram} from '@fortawesome/free-brands-svg-icons'
 import {DialogPage} from './components/DialogPage/DialogPage';
+import Axios from 'axios';
+import Slider from 'react-rangeslider'
 
 export class App extends Component<{}, {
   pageWrapperStyle: CSSProperties
 }> {
+
   private navbar: React.RefObject<HTMLDivElement>;
+
+  private Sports: FC = () => {
+    const NBADataPrices = [99, 120, 92, 115, 134, 101, 123, 92, 89, 105, 112, 113, 121, 130, 110, 120, 108, 109, 107, 98, 85, 135, 143, 111, 118, 103, 134, 125, 104, 108];
+    const [state, setState] = useState<{
+      NBAData?: {
+        meta: {
+          currentPage: number,
+          next_page: any,
+          per_page: number,
+          total_count: number,
+          total_pages: number,
+        },
+        data: {
+          abbreviation: string,
+          city: string,
+          conference: string,
+          division: string,
+          full_name: string,
+          id: number,
+          name: string
+        }[]
+      }
+    }>();
+    if (!state?.NBAData) {
+      Axios.get("https://free-nba.p.rapidapi.com/teams?page=0", {
+        headers: {
+          "x-rapidapi-host": "free-nba.p.rapidapi.com", 
+          "x-rapidapi-key": "e5d8563997mshcfb030c802400d3p1ec262jsn6864acf2d34a" 
+        }
+      }).then((response: any) => {
+        console.log(response);
+        console.log(response.data.data);
+        setState({
+          NBAData: response.data
+        });
+      }).catch(error => {
+        console.error(error);
+      });
+    }
+    return (
+      <div id="sports">
+        <Hero 
+          title="Sports" 
+          imgFilename="sports.jpg" 
+        />
+        <div id="content">
+          <div>
+            <div>
+              <div>
+                <a>
+                  By Team
+                </a>
+                <a>
+                  By Price
+                </a>
+              </div>
+              <div>
+                <label>
+                  <span>
+                    Distance
+                  </span>
+                  <span>
+                    10 mi
+                  </span>
+                </label>
+                <div>
+                  <span>
+                    0
+                  </span>
+                    <Slider value={20} />
+                  <span>
+                    30
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div>
+              {
+                const teams = state?.NBAData?.data;
+                Array.from(Array(2), (e, i) => {
+                  const columnNumber = i + 1;
+                  return (
+                    <div key={i}>
+                      {
+                        teams.splice(teams.length * (i * 0.5), teams.length * (columnNumber * 0.5)).map((team, k) => {
+                          return (
+                            <div key={k}>
+                              {team.full_name}
+                              {NBADataPrices[k]}
+                            </div>
+                          ) 
+                        })
+                      }
+                    </div>
+                  );
+                })
+              }
+            </div>
+          </div>
+          <div>
+            Placeholder for promotional messaging
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   constructor(props: any) {
     super(props);
@@ -61,8 +170,11 @@ export class App extends Component<{}, {
                   Array.from(Array(6), (e, i) => {
                     const categoryNumber = i + 1;
                     return (
-                      <Link to="/subscribe">
-                        <div key={categoryNumber}>
+                      <Link 
+                        key={categoryNumber}
+                        to="/subscribe"
+                      >
+                        <div>
                           Category {categoryNumber}
                         </div>
                       </Link>
@@ -88,8 +200,11 @@ export class App extends Component<{}, {
                   Array.from(Array(4), (e, i) => {
                     const eventNumber = i + 1;
                     return (
-                      <Link to="/subscribe">
-                        <div key={eventNumber}>
+                      <Link 
+                        key={eventNumber}
+                        to="/subscribe"
+                      >
+                        <div>
                           Event {eventNumber}
                         </div>
                       </Link>
@@ -110,8 +225,8 @@ export class App extends Component<{}, {
             </Route>
 
             <Route path="/sports">
-              <Hero title="Sports" imgFilename="sports.jpg" />
-
+              <this.Sports />
+              
             </Route>
 
             <Route path="/subscribe">
