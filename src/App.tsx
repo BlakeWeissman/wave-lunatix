@@ -93,23 +93,13 @@ export class App extends Component<{}, {
             </div>
             <div>
               {
-                const teams = state?.NBAData?.data;
-                Array.from(Array(2), (e, i) => {
-                  const columnNumber = i + 1;
+                state?.NBAData?.data.map((team, i) => {
                   return (
                     <div key={i}>
-                      {
-                        teams.splice(teams.length * (i * 0.5), teams.length * (columnNumber * 0.5)).map((team, k) => {
-                          return (
-                            <div key={k}>
-                              {team.full_name}
-                              {NBADataPrices[k]}
-                            </div>
-                          ) 
-                        })
-                      }
+                      {team.full_name}
+                      {NBADataPrices[i]}
                     </div>
-                  );
+                  ) 
                 })
               }
             </div>
