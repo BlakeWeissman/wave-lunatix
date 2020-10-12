@@ -7,8 +7,7 @@ import {NeoInput} from './components/NeoInput/NeoInput';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faTwitter, faFacebookF, faInstagram} from '@fortawesome/free-brands-svg-icons'
 import {DialogPage} from './components/DialogPage/DialogPage';
-import Axios from 'axios';
-import Slider from 'react-rangeslider'
+import {Sports} from './components/Sports/Sports';
 
 export class App extends Component<{}, {
   pageWrapperStyle: CSSProperties
@@ -16,103 +15,7 @@ export class App extends Component<{}, {
 
   private navbar: React.RefObject<HTMLDivElement>;
 
-  private Sports: FC = () => {
-    const NBADataPrices = [99, 120, 92, 115, 134, 101, 123, 92, 89, 105, 112, 113, 121, 130, 110, 120, 108, 109, 107, 98, 85, 135, 143, 111, 118, 103, 134, 125, 104, 108];
-    const [state, setState] = useState<{
-      NBAData?: {
-        meta: {
-          currentPage: number,
-          next_page: any,
-          per_page: number,
-          total_count: number,
-          total_pages: number,
-        },
-        data: {
-          abbreviation: string,
-          city: string,
-          conference: string,
-          division: string,
-          full_name: string,
-          id: number,
-          name: string
-        }[]
-      }
-    }>();
-    if (!state?.NBAData) {
-      Axios.get("https://free-nba.p.rapidapi.com/teams?page=0", {
-        headers: {
-          "x-rapidapi-host": "free-nba.p.rapidapi.com", 
-          "x-rapidapi-key": "e5d8563997mshcfb030c802400d3p1ec262jsn6864acf2d34a" 
-        }
-      }).then((response: any) => {
-        console.log(response);
-        console.log(response.data.data);
-        setState({
-          NBAData: response.data
-        });
-      }).catch(error => {
-        console.error(error);
-      });
-    }
-    return (
-      <div id="sports">
-        <Hero 
-          title="Sports" 
-          imgFilename="sports.jpg" 
-        />
-        <div id="content">
-          <div>
-            <div>
-              <div>
-                <a>
-                  By Team
-                </a>
-                <a>
-                  By Price
-                </a>
-              </div>
-              <div>
-                <label>
-                  <span>
-                    Distance
-                  </span>
-                  <span>
-                    10 mi
-                  </span>
-                </label>
-                <div>
-                  <span>
-                    0
-                  </span>
-                    <Slider value={20} />
-                  <span>
-                    30
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div>
-              {
-                state?.NBAData?.data.map((team, i) => {
-                  return (
-                    <div key={i}>
-                      {team.full_name}
-                      {NBADataPrices[i]}
-                    </div>
-                  ) 
-                })
-              }
-            </div>
-          </div>
-          <div>
-            Placeholder for promotional messaging
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  constructor(props: any) {
+  constructor(props: {}) {
     super(props);
     this.navbar = React.createRef();
   }
@@ -215,8 +118,7 @@ export class App extends Component<{}, {
             </Route>
 
             <Route path="/sports">
-              <this.Sports />
-              
+              <Sports />
             </Route>
 
             <Route path="/subscribe">
