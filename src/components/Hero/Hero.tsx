@@ -8,6 +8,7 @@ export class Hero extends Component<{
   title: string,
   imgFilename: string,
   centerText?: boolean,
+  onChange?: (value: string) => void,
 }, {}> {
   render() {
     return (
@@ -25,6 +26,11 @@ export class Hero extends Component<{
               </span>
             }
             disableHyperlink 
+            onChange={value => {
+              if (this.props.onChange) {
+                this.props.onChange(value);
+              }
+            }}
           />
         </div>
       </div>

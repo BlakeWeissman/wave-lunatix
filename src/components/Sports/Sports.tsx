@@ -24,6 +24,7 @@ export class Sports extends Component<{}, {
   sortByPrice?: boolean,
   sortByDescending?: boolean,
   displayedSelectedPrice: number,
+  searchQuery?: string
 }> {
 
   private teamPrices = [99, 120, 92, 115, 134, 101, 123, 92, 89, 105, 112, 113, 121, 130, 110, 120, 108, 109, 107, 98, 85, 135, 143, 111, 118, 103, 134, 125, 104, 108];
@@ -80,6 +81,11 @@ export class Sports extends Component<{}, {
         <Hero 
           title="Sports" 
           imgFilename="sports.jpg" 
+          onChange={value => {
+            this.setState({
+              searchQuery: value
+            });
+          }}
         />
         <div>
           <div>
@@ -135,7 +141,7 @@ export class Sports extends Component<{}, {
                           displayedSelectedPrice: value
                         });
                       }}
-                      onChangeComplete={value => {
+                      onChangeComplete={() => {
                         this.sliderBeingUsed = false;
                         this.setState({
                           selectedPrice: this.state?.displayedSelectedPrice
@@ -153,7 +159,10 @@ export class Sports extends Component<{}, {
                 (
                   () => {
                     if (!this.teamsColumns.length || !this.sliderBeingUsed) {
-                      const teams = this.state?.teams?.slice().filter(team => team.price <= this.state?.selectedPrice);
+                      const teams = this.state?.teams?.slice().filter(team => {
+                        const searchQuery = this.state?.searchQuery;
+                        return team.price <= this.state?.selectedPrice && (!searchQuery || Object.values(team).filter(value => String(value).toLowerCase().includes(searchQuery.toLowerCase())).length);
+                      });
                       if (this.state?.sortByPrice) {
                         teams?.sort((a, b) => a.price - b.price)
                       }
