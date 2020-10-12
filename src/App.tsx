@@ -8,6 +8,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faTwitter, faFacebookF, faInstagram} from '@fortawesome/free-brands-svg-icons'
 import {DialogPage} from './components/DialogPage/DialogPage';
 import {Sports} from './components/Sports/Sports';
+import {faUserCircle, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 
 export class App extends Component<{}, {
   pageWrapperStyle: CSSProperties
@@ -47,7 +48,9 @@ export class App extends Component<{}, {
               </NavLink>
             </div>
             <div>
-              O
+              <NavLink to="/cart">
+                My Tickets <FontAwesomeIcon icon={faUserCircle} />
+              </NavLink>
             </div>
           </div>
         </div>
@@ -153,7 +156,63 @@ export class App extends Component<{}, {
 
             <Route path="/cart">
               <DialogPage>
-                Cart
+                <div id="cart">
+                  <h3>
+                    My Cart
+                  </h3>
+
+                  <div>
+                    <div>
+                      <span>
+                        Event 1
+                      </span>
+                      <p>
+                        Venue
+                        <br />
+                        Date
+                      </p>
+                      <div>
+                        <span>
+                          Quantity
+                        </span>
+                        <select>
+                          {
+                            Array.from(Array(5), (e, i) => {
+                              const number = i + 1;
+                              return (
+                                <option
+                                  key={i}
+                                  value={number}
+                                >
+                                  {number}
+                                </option>
+                              );
+                            })
+                          }
+                        </select>
+                      </div>
+                    </div>
+                    <div>
+                      <span>
+                        &#36;1000
+                      </span>
+                      <a>
+                        <FontAwesomeIcon icon={faTrashAlt} />
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <Link to="/sports">
+                      <button>
+                        Continue Shopping
+                      </button>
+                    </Link>
+                    <button>
+                      Checkout
+                    </button>
+                  </div>
+                </div>
               </DialogPage>
             </Route>
 

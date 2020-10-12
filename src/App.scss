@@ -12,10 +12,24 @@
     justify-content: space-between;
     max-width: $max-width;
     margin: auto;
-    div a {
-      color: $grey;
-      margin: 0 45px;
-      text-transform: uppercase;
+    div {
+      display: flex;
+      a {
+        color: $grey;
+        margin: 0 45px;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        svg {
+          $width-height: 50px;
+          width: $width-height;
+          height: $width-height;
+          margin-left: 13px;
+        }   
+      }
+    }
+    & > div:last-of-type a {
+      margin: 0;
     }
   }
   img {
@@ -198,3 +212,75 @@ footer {
   }
 }
 
+#cart {
+  width: 100%;
+  *:not(button) {
+    font-family: 'Padauk', sans-serif !important;
+  }
+  h3 {
+    text-transform: uppercase;
+    font-size: 27px;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  span {
+    font-size: 21px;
+  }
+  p {
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+  select {
+    margin-left: 11px;
+    background: #d4d6d5;
+    outline: 0;
+    border: none;
+    border-radius: 16px;
+    box-shadow: -1px -1px 3px 1px #ffffff, 2px 2px 6px -1px #000000;
+    font-size: 17px;
+    padding: 1px 12px;
+    cursor: pointer;
+  }
+  & > div:not(:last-of-type) {
+    width: 100%;
+    border: 1px solid black;
+    border-width: 1px 0;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 7px;
+    padding-bottom: 10px;
+    & > div {
+      display: flex;
+      flex-direction: column;
+      &:first-of-type {
+        & > span:first-of-type {
+          text-transform: uppercase;
+        }
+      }
+      &:last-of-type {
+        align-items: flex-end;
+        span {
+          margin: auto;
+        }
+        a {
+          cursor: pointer;
+          svg {
+            $width-height: 33px;
+            width: $width-height;
+            height: $width-height;
+          }
+        }
+      }
+    }
+  }
+  & > div:last-of-type {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+    button {
+      margin: 0 20px;
+    }
+  }
+}

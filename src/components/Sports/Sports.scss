@@ -12,7 +12,6 @@ div#sports > div:last-child {
       justify-content: space-between;
       align-items: center;
       & > div:first-child {
-        margin-right: 20vw;
         display: flex;
         a {
           background: linear-gradient(#aeb0af, #717372, #8d8b8c);
@@ -42,6 +41,8 @@ div#sports > div:last-child {
         display: flex;
         flex-direction: column;
         width: 100%;
+        margin-left: auto;
+        max-width: 350px;
         span {
           font-size: 18px;
           font-family: 'Padauk', sans-serif;
