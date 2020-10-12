@@ -1,6 +1,7 @@
 @import "../../index.scss";
 
 .dialog-page {
+  padding: 0 $site-padding;
   padding-top: 6vh;
   padding-bottom: 15vh;
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../../assets/purple.jpg") 50% 0px repeat-y fixed;

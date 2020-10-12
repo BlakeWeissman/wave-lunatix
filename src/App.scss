@@ -11,6 +11,7 @@
     align-items: center;
     justify-content: space-between;
     max-width: $max-width;
+    padding: 0 $site-padding;
     margin: auto;
     div {
       display: flex;
@@ -41,6 +42,7 @@
   display: flex;
   justify-content: space-between;
   max-width: $max-width;
+  padding: 0 $site-padding;
   margin: auto;
   div {
     color: #ffffff;
@@ -86,11 +88,13 @@
 
 .hr-container {
   max-width: $max-width;
+  padding: 0 $site-padding;
   margin: auto;
 }
 
 .cta {
   max-width: $max-width;
+  padding: 0 $site-padding;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -110,6 +114,7 @@
   padding: 55px 0;
   div {
     max-width: $max-width;
+    padding: 0 $site-padding;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -133,6 +138,7 @@ footer {
   padding: 60px 0;
   & > div {
     max-width: $max-width;
+    padding: 0 $site-padding;
   }
   #apps {
     a {
