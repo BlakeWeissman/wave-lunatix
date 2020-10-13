@@ -1,6 +1,6 @@
 import React, {Component, CSSProperties, useEffect} from 'react';
 import './App.scss';
-import {NavLink, BrowserRouter, Switch, Route, Link, useLocation} from 'react-router-dom';
+import {NavLink, HashRouter, Switch, Route, Link, useLocation} from 'react-router-dom';
 import {Hero} from './components/Hero/Hero';
 import {LargeInput} from './components/LargeInput/LargeInput';
 import {NeoInput} from './components/NeoInput/NeoInput';
@@ -72,7 +72,7 @@ export class App extends Component<{}, {
       }
     });
     return (
-      <BrowserRouter>
+      <HashRouter>
         <ScrollToTop />
         <div 
           id="navbar" 
@@ -342,7 +342,7 @@ export class App extends Component<{}, {
             </div>
           </footer>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }
