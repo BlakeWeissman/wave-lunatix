@@ -88,6 +88,7 @@
         }
         @include mobile {
           $width: 214px;
+          $box-shadow-blur: 39px;
           transition: right 0.5s ease 0s;
           background: #ffffff;
           display: flex;
@@ -96,8 +97,8 @@
           height: 100vh;
           position: absolute;
           padding: 0 25px;
-          box-shadow: 0px 8px 21px 0px rgba(0, 0, 0, 0.26);
-          right: -$width;
+          @include box-shadow(0px -7px $box-shadow-blur 0px #000000);
+          right: -$width - $box-shadow-blur;
           justify-content: flex-start;
           align-items: flex-end;
           padding: 0;
@@ -151,7 +152,7 @@
     padding: 0;
     margin-left: $nav-menu-icon-margin;
     width: $nav-menu-icon-width;
-    box-shadow: none;
+    @include box-shadow(none);
     @include mobile {
       display: flex;
     }
@@ -286,7 +287,7 @@
 }
 
 footer {
-  $footer-background: #3c3c3a;
+  $footer-background: $dark-grey;
   background: $footer-background;
   color: #ffffff;
   display: flex;
@@ -397,6 +398,7 @@ footer {
   width: 100%;
   *:not(button) {
     font-family: 'Padauk', sans-serif !important;
+    color: $dark-grey;
   }
   h3 {
     text-transform: uppercase;
@@ -423,10 +425,14 @@ footer {
     padding: 1px 12px;
     cursor: pointer;
     @include box-shadow($interactive-shadow);
+    @include interactive-transition;
+    &:hover {
+      @include box-shadow($interactive-shadow-hover);
+    }
   }
   & > div:not(:last-of-type) {
     width: 100%;
-    border: 1px solid black;
+    border: 1px solid $dark-grey;
     border-width: 1px 0;
     display: flex;
     justify-content: space-between;
@@ -448,9 +454,18 @@ footer {
         a {
           cursor: pointer;
           svg {
+            path {
+              color: $grey;
+              @include interactive-transition;
+            }
             $width-height: 33px;
             width: $width-height;
             height: $width-height;
+            &:hover {
+              path {
+                color: darken($grey, 7);
+              }
+            }
           }
         }
       }

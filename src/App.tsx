@@ -1,6 +1,6 @@
-import React, {Component, CSSProperties, Props, FC, useState} from 'react';
+import React, {Component, CSSProperties, useEffect} from 'react';
 import './App.scss';
-import {NavLink, BrowserRouter, Switch, Route, Link} from 'react-router-dom';
+import {NavLink, BrowserRouter, Switch, Route, Link, useLocation} from 'react-router-dom';
 import {Hero} from './components/Hero/Hero';
 import {LargeInput} from './components/LargeInput/LargeInput';
 import {NeoInput} from './components/NeoInput/NeoInput';
@@ -9,6 +9,16 @@ import {faTwitter, faFacebookF, faInstagram} from '@fortawesome/free-brands-svg-
 import {DialogPage} from './components/DialogPage/DialogPage';
 import {Sports} from './components/Sports/Sports';
 import {faUserCircle, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 export class App extends Component<{}, {
   pageWrapperStyle: CSSProperties
@@ -34,6 +44,7 @@ export class App extends Component<{}, {
 
   componentDidMount() {
     this.setSitePadding();
+    window.scrollTo(0, 0);
   }
 
   render() {
@@ -56,6 +67,7 @@ export class App extends Component<{}, {
     });
     return (
       <BrowserRouter>
+        <ScrollToTop />
         <div 
           id="navbar" 
           ref={this.navbar}>

@@ -51,9 +51,14 @@
 
 $site-padding: 30px;
 $max-width: 1100px + $site-padding;
+
 $red: #e53422;
 $grey: #717372;
-$interactive-shadow: (0px 0px 4px 2px #ffffff, 2px 2px 6px 1px #000000);
+$dark-grey: #3c3c3a;
+
+$interactive-white-shadow: 0px 0px 4px 2px #ffffff;
+$interactive-shadow: ($interactive-white-shadow, 2px 2px 6px 1px #000000);
+$interactive-shadow-hover: ($interactive-white-shadow, 4px 4px 6px 1px #000000);
 
 body {
   margin: 0;
@@ -92,7 +97,7 @@ button {
   @include interactive-transition;
   &:hover {
     @include darken-hover($background, $color, 6);
-    @include box-shadow((0px 0px 4px 2px #ffffff, 4px 4px 6px 1px #000000));
+    @include box-shadow($interactive-shadow-hover);
   }
 }
 
