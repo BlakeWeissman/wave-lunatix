@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/wave-lunatix/precache-manifest.d5144ee65ff66d572a14526e9dcb47e6.js"
+  "/wave-lunatix/precache-manifest.855df87c02dca484e73c187a49d1208a.js"
 );
 
 self.addEventListener('message', (event) => {

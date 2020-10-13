@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7b2f089ed948d8663ce9e414aab9bc8a",
+    "revision": "fd4ba0c7ff079ac9489828a8cf0db216",
     "url": "/wave-lunatix/index.html"
   },
   {
-    "revision": "bc75cf0e32f174741aeb",
+    "revision": "3cabd05732925330612f",
     "url": "/wave-lunatix/static/css/main.43c301a4.chunk.css"
   },
   {
-    "revision": "66833989e535e5ff8558",
-    "url": "/wave-lunatix/static/js/2.351d8a01.chunk.js"
+    "revision": "46e9818865f09c00f175",
+    "url": "/wave-lunatix/static/js/2.39c6f061.chunk.js"
   },
   {
     "revision": "42780b3dfc4008075422892f0026a2f6",
-    "url": "/wave-lunatix/static/js/2.351d8a01.chunk.js.LICENSE.txt"
+    "url": "/wave-lunatix/static/js/2.39c6f061.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "bc75cf0e32f174741aeb",
-    "url": "/wave-lunatix/static/js/main.be6ef792.chunk.js"
+    "revision": "3cabd05732925330612f",
+    "url": "/wave-lunatix/static/js/main.8924574d.chunk.js"
   },
   {
     "revision": "2811f2da7cadb98cc94c",
