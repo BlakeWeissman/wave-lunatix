@@ -22,7 +22,7 @@ Builds the app for production to the `build` folder.<br />
 
 
 ### Deploy with Docker
-In the project directory, run the following to build the docker container:
+In the project directory, run the following command to build the docker container:
 
 ```bash
 $ docker build -t blakeweissman/wave .
