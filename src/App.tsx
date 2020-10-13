@@ -21,17 +21,23 @@ function ScrollToTop() {
 }
 
 export class App extends Component<{}, {
-  pageWrapperStyle: CSSProperties
+  pageWrapperStyle?: CSSProperties,
+  videoPlayed: boolean
 }> {
 
   private navbar: React.RefObject<HTMLDivElement>;
   private navbarWrap: React.RefObject<HTMLDivElement>;
+  private video: React.RefObject<HTMLVideoElement>;
   private lastActivatedBreakpoint: number = window.innerWidth;
 
   constructor(props: {}) {
     super(props);
     this.navbar = React.createRef();
     this.navbarWrap = React.createRef();
+    this.video = React.createRef();
+    this.state = {
+      videoPlayed: false
+    };
   }
 
   setSitePadding(): void {
@@ -159,7 +165,21 @@ export class App extends Component<{}, {
               </div>
               <div id="video-container">
                 <div>
-                  <img src={require('./assets/video.png')} />        
+                  <video 
+                    ref={this.video}
+                    onClick={() => {
+                      if (!this.state.videoPlayed) {
+                        this.setState({
+                          videoPlayed: true
+                        });
+                        this.video.current?.play();
+                      }
+                    }}
+                    src={require('./assets/video.mov')} 
+                    width="500" 
+                    poster={require('./assets/video.png')}
+                    controls={this.state.videoPlayed}
+                  />
                   <Link to="/subscribe">
                     <button>
                       Learn More
