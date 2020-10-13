@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/wave-lunatix/static/css/main.43c301a4.chunk.css",
+    "main.js": "/wave-lunatix/static/js/main.be6ef792.chunk.js",
+    "main.js.map": "/wave-lunatix/static/js/main.be6ef792.chunk.js.map",
+    "runtime-main.js": "/wave-lunatix/static/js/runtime-main.3900e29c.js",
+    "runtime-main.js.map": "/wave-lunatix/static/js/runtime-main.3900e29c.js.map",
+    "static/js/2.351d8a01.chunk.js": "/wave-lunatix/static/js/2.351d8a01.chunk.js",
+    "static/js/2.351d8a01.chunk.js.map": "/wave-lunatix/static/js/2.351d8a01.chunk.js.map",
+    "index.html": "/wave-lunatix/index.html",
+    "precache-manifest.d5144ee65ff66d572a14526e9dcb47e6.js": "/wave-lunatix/precache-manifest.d5144ee65ff66d572a14526e9dcb47e6.js",
+    "service-worker.js": "/wave-lunatix/service-worker.js",
+    "static/css/main.43c301a4.chunk.css.map": "/wave-lunatix/static/css/main.43c301a4.chunk.css.map",
+    "static/js/2.351d8a01.chunk.js.LICENSE.txt": "/wave-lunatix/static/js/2.351d8a01.chunk.js.LICENSE.txt",
+    "static/media/apple.jpg": "/wave-lunatix/static/media/apple.5f1958bc.jpg",
+    "static/media/google.jpg": "/wave-lunatix/static/media/google.43ef0c46.jpg",
+    "static/media/Sports.scss": "/wave-lunatix/static/media/padauk-v6-latin-regular.a713684e.eot",
+    "static/media/purple-short.jpg": "/wave-lunatix/static/media/purple-short.5c87a83a.jpg",
+    "static/media/DialogPage.scss": "/wave-lunatix/static/media/purple.fc4a7525.jpg",
+    "static/media/sports.jpg": "/wave-lunatix/static/media/sports.e4a584ef.jpg",
+    "static/media/video.mov": "/wave-lunatix/static/media/video.9063b999.mov",
+    "static/media/video.png": "/wave-lunatix/static/media/video.caeff4ed.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3900e29c.js",
+    "static/js/2.351d8a01.chunk.js",
+    "static/css/main.43c301a4.chunk.css",
+    "static/js/main.be6ef792.chunk.js"
+  ]
+}
