@@ -29,19 +29,23 @@ div#sports > div:last-child {
           border-radius: 10px;
           padding: 3px 22px;
           font-size: 18px;
-          box-shadow: 2px 3px 6px -2px #000000;
+          @include box-shadow(2px 3px 6px -2px #000000);
           margin-right: 14px;
           white-space: nowrap;
           display: flex;
           align-items: center;
           cursor: pointer;
           user-select: none;
+          @include interactive-transition;
           svg {
             margin-left: 9px;
           }
           &.active {
             background: linear-gradient(#fbfbfb, #f9f9f9, #d5d5d5);
             color: black;
+          }
+          &:hover {
+            @include box-shadow(3px 4px 7px -2px #000000);
           }
         }
       }
@@ -99,6 +103,10 @@ div#sports > div:last-child {
             transform: translate3d(-50%, -50%, 0);
             outline: none;
             @include box-shadow(0px 1px 3px -1px #000000);
+            @include interactive-transition;
+            &:hover, &:active {
+              @include box-shadow(0px 2px 4px -1px #000000);
+            }
           }
           .rangeslider-horizontal {
             display: block;

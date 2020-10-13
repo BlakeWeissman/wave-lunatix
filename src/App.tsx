@@ -36,11 +36,11 @@ export class App extends Component<{}, {
           id="navbar" 
           ref={this.navbar}>
           <div>
-            <Link to="">
+            <Link to="/">
               <img src={require('./assets/logo.png')} />
             </Link>
             <div>
-              <NavLink to="">
+              <NavLink exact to="/">
                 Events
               </NavLink>
               <NavLink to="/sports">

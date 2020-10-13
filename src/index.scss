@@ -39,10 +39,21 @@
   }
 }
 
+@mixin interactive-transition {
+  $transition: 0.15s ease 0s;
+  transition: background $transition, color $transition, box-shadow $transition; 
+}
+
+@mixin darken-hover($background, $color, $darken-by) {
+  background: darken($background, $darken-by);
+  color: darken($color, $darken-by);
+}
+
 $site-padding: 30px;
 $max-width: 1100px + $site-padding;
 $red: #e53422;
 $grey: #717372;
+$interactive-shadow: (0px 0px 4px 2px #ffffff, 2px 2px 6px 1px #000000);
 
 body {
   margin: 0;
@@ -66,14 +77,21 @@ a {
 }
 
 button {
+  $background: #558006;
+  $color: #ffffff;
   white-space: nowrap;
-  background: #558006;
+  background: $background;
   border: none;
-  color: #fff;
+  color: $color;
   border-radius: 20px;
   padding: 9px 19px;
   font-size: 17px;
   outline: none;
   cursor: pointer;
-  @include box-shadow((0px 0px 4px 2px #ffffff, 2px 2px 6px 1px #000000));
+  @include box-shadow($interactive-shadow);
+  @include interactive-transition;
+  &:hover {
+    @include darken-hover($background, $color, 6);
+    @include box-shadow((0px 0px 4px 2px #ffffff, 4px 4px 6px 1px #000000));
+  }
 }

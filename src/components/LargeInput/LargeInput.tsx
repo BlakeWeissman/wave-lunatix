@@ -27,7 +27,10 @@ export class LargeInput extends Component<{
             {this.props.addonText}
           </a>
           : 
-          <Link to="/subscribe">
+          <Link 
+            to="/subscribe"
+            className="hyperlink"
+          >
             {this.props.addonText}
           </Link> 
         }

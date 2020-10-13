@@ -21,6 +21,14 @@
         text-transform: uppercase;
         display: flex;
         align-items: center;
+        padding: 10px 15px;
+        border-radius: 100px;
+        @include interactive-transition;
+        &:hover, &.active {
+          background: $grey;
+          color: #ffffff;
+          @include box-shadow($interactive-shadow);
+        }
         svg {
           $width-height: 50px;
           width: $width-height;
@@ -59,6 +67,10 @@
     min-height: $height;
     padding: $padding;
     margin-bottom: $bottom-div-margin;
+    @include interactive-transition;
+    &:hover {
+      @include box-shadow(3px 3px 12px -2px #000000);
+    }
   }
   @media (max-width: 592px) {
     a {
@@ -152,7 +164,8 @@
 }
 
 footer {
-  background: #3c3c3a;
+  $footer-background: #3c3c3a;
+  background: $footer-background;
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -206,16 +219,22 @@ footer {
     a {
       $font-size: 27px;
       $width-height: $font-size * 1.555555;
+      $color: #ffffff;
       font-size: 27px;
-      border: 2px solid white;
+      border: 2px solid $color;
       border-radius: 100%;
       display: flex;
       width: $width-height;
       height: $width-height;
       margin: 0 10px;
-      color: #ffffff;
+      color: $color;
+      @include interactive-transition;
       * {
         margin: auto;
+      }
+      &:hover {
+        background: $color;
+        color: $footer-background;
       }
     }
   }
@@ -278,10 +297,10 @@ footer {
     outline: 0;
     border: none;
     border-radius: 16px;
-    box-shadow: -1px -1px 3px 1px #ffffff, 2px 2px 6px -1px #000000;
     font-size: 17px;
     padding: 1px 12px;
     cursor: pointer;
+    @include box-shadow($interactive-shadow);
   }
   & > div:not(:last-of-type) {
     width: 100%;

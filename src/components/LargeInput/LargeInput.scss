@@ -36,9 +36,11 @@ $border-radius: 15px;
     border: none;
   }
   a {
+    $color: #ffffff;
+    $background: $red;
     border-radius: 0 $border-radius $border-radius 0;
-    color: #ffffff;
-    background: $red;
+    color: $color;
+    background: $background;
     border-bottom: #ffffff solid 3px;
     &, span {
       white-space: nowrap;
@@ -49,6 +51,13 @@ $border-radius: 15px;
     padding: 0px 24px 0px 18px;
     display: flex;
     align-items: center;
+    &.hyperlink {
+      cursor: pointer;
+      @include interactive-transition;
+      &:hover {
+        @include darken-hover($background, $color, 7);
+      }
+    }
   }
   @include mobile {
     a, span, input {
