@@ -15,13 +15,16 @@ export class App extends Component<{}, {
 }> {
 
   private navbar: React.RefObject<HTMLDivElement>;
+  private navbarWrap: React.RefObject<HTMLDivElement>;
+  private lastActivatedBreakpoint: number = window.innerWidth;
 
   constructor(props: {}) {
     super(props);
     this.navbar = React.createRef();
+    this.navbarWrap = React.createRef();
   }
 
-  componentDidMount() {
+  setSitePadding(): void {
     this.setState({
       pageWrapperStyle: { 
         paddingTop: this.navbar.current?.clientHeight
@@ -29,7 +32,28 @@ export class App extends Component<{}, {
     });
   }
 
+  componentDidMount() {
+    this.setSitePadding();
+  }
+
   render() {
+    const toggleNav = () => {
+      this.navbarWrap.current?.classList.toggle('open');
+      document.body.classList.toggle("no-scroll");
+    }
+    document.addEventListener('click', event => { 
+      const target = event.target as HTMLElement;
+      if (this.navbarWrap.current?.classList.contains('open') && (target?.tagName === "A" || target?.id === "nav-wrapper")) {
+       toggleNav();
+      }
+    });
+    const breakpoint = 1030;
+    window.addEventListener('resize', () => {
+      if ((this.lastActivatedBreakpoint >= breakpoint && window.innerWidth < this.lastActivatedBreakpoint) || this.lastActivatedBreakpoint <= breakpoint && window.innerWidth > this.lastActivatedBreakpoint) {
+        this.lastActivatedBreakpoint = window.innerWidth;
+        this.setSitePadding();
+      }
+    });
     return (
       <BrowserRouter>
         <div 
@@ -39,19 +63,32 @@ export class App extends Component<{}, {
             <Link to="/">
               <img src={require('./assets/logo.png')} />
             </Link>
-            <div>
-              <NavLink exact to="/">
-                Events
-              </NavLink>
-              <NavLink to="/sports">
-                Sports
-              </NavLink>
+            <div ref={this.navbarWrap} id="nav-wrapper">
+              <div>
+                <button onClick={toggleNav}>
+                  <span />
+                  <span />
+                </button>
+                <div>
+                  <NavLink exact to="/">
+                    Events
+                  </NavLink>
+                  <NavLink to="/sports">
+                    Sports
+                  </NavLink>
+                </div>
+                <div>
+                  <NavLink to="/cart">
+                    My Tickets <FontAwesomeIcon icon={faUserCircle} />
+                  </NavLink>
+                </div>
+              </div>
             </div>
-            <div>
-              <NavLink to="/cart">
-                My Tickets <FontAwesomeIcon icon={faUserCircle} />
-              </NavLink>
-            </div>
+            <button onClick={toggleNav}>
+              <span />
+              <span />
+              <span />
+            </button>
           </div>
         </div>
         <div style={this.state?.pageWrapperStyle}>

@@ -95,3 +95,7 @@ button {
     @include box-shadow((0px 0px 4px 2px #ffffff, 4px 4px 6px 1px #000000));
   }
 }
+
+.no-scroll {
+  overflow: hidden;
+}

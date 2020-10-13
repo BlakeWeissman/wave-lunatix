@@ -1,11 +1,14 @@
 @import "index.scss";
 
 #navbar {
+  $nav-menu-icon-width: 25px;
+  $nav-menu-icon-margin: 45px;
   padding: 30px 0;
   background: #ffffff;
   position: fixed;
   width: 100%;
   z-index: 1;
+  @include box-shadow(0px 0px 30px -3px #000000);
   & > div {
     display: flex;
     align-items: center;
@@ -14,20 +17,25 @@
     padding: 0 $site-padding;
     margin: auto;
     div {
-      display: flex;
       a {
         color: $grey;
-        margin: 0 45px;
         text-transform: uppercase;
         display: flex;
         align-items: center;
         padding: 10px 15px;
         border-radius: 100px;
         @include interactive-transition;
+        @include mobile {
+          border-radius: 0;
+          width: 100%;
+        }
         &:hover, &.active {
           background: $grey;
           color: #ffffff;
           @include box-shadow($interactive-shadow);
+          @include mobile {
+            @include box-shadow(none);
+          }
         }
         svg {
           $width-height: 50px;
@@ -37,12 +45,126 @@
         }   
       }
     }
-    & > div:last-of-type a {
-      margin: 0;
+    & > a {
+      z-index: 2;
+    }
+    & > div {
+      @include mobile {
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        transition: background 0.2s ease 0s;
+        background: transparent;
+        z-index: 2;
+        pointer-events: none;
+        &.open {
+          background: rgba(0, 0, 0, 0.75);
+          pointer-events: auto;
+          & > div {
+            right: 0;
+          }
+        }
+      }
+      & > div {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        button {
+          margin: 47.5px 0;
+          margin-right: 17px;
+        }
+        span {
+          margin-top: 3px;
+          $transform-value: 3.2px;
+          &:first-child {
+            transform: rotate(45deg) translate($transform-value, $transform-value);
+          }
+          &:last-child {
+            transform: rotate(-45deg) translate($transform-value, -$transform-value);
+          }
+        }
+        @include mobile {
+          $width: 214px;
+          transition: right 0.5s ease 0s;
+          background: #ffffff;
+          display: flex;
+          flex-direction: column;
+          width: $width;
+          height: 100vh;
+          position: absolute;
+          padding: 0 25px;
+          box-shadow: 0px 8px 21px 0px rgba(0, 0, 0, 0.26);
+          right: -$width;
+          justify-content: flex-start;
+          align-items: flex-end;
+          padding: 0;
+        }
+        & > div {
+          &:first-of-type {
+            display: flex;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            right: 0;
+            justify-content: center;
+            z-index: 1;
+            @include mobile {
+              position: initial;
+              flex-direction: column;
+              width: initial;
+              align-items: flex-end;
+              width: 100%;
+            }
+            a {
+              margin: 0 45px;
+              @include mobile {
+                margin: 0;
+              }
+            }
+          } 
+          &:last-of-type {
+            margin-left: auto;
+            z-index: 2;
+            @include mobile {
+              margin-top: auto;
+              width: 100%;
+            }
+          }
+        }
+      }
     }
   }
   img {
     width: 210px;
+    @include mobile {
+      width: 143px;
+    }
+  }
+  button {
+    display: none;
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin-left: $nav-menu-icon-margin;
+    width: $nav-menu-icon-width;
+    box-shadow: none;
+    @include mobile {
+      display: flex;
+    }
+    span {
+      position: relative;
+      display: block;
+      height: 4px;
+      border-radius: 20px;
+      width: $nav-menu-icon-width;
+      background-color: $grey;
+      transition: all 0.2s ease 0s;
+      margin: 2.5px 0;
+    }
   }
 }
 
