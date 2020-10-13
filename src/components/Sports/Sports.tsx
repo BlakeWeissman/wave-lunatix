@@ -299,9 +299,13 @@ export class Sports extends Component<{}, {
                 </a>
               </div>
               :
+              this.state?.teams 
+              ?
               <p>
                 No teams match your options.
               </p>
+              :
+              null
             }
           </div>
           <div style={this.state?.adStyle}>

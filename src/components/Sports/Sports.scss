@@ -1,13 +1,13 @@
 @import "../../index.scss";
-p {
-  color: #122c47;
-  text-align: center;
-  font-family: 'Padauk', sans-serif;
-  font-weight: 400;
-  width: 100%;
-}
 
 div#sports > div:last-child {
+  p {
+    color: #122c47;
+    text-align: center;
+    font-family: 'Padauk', sans-serif;
+    font-weight: 400;
+    width: 100%;
+  }
   display: flex;
   max-width: $max-width;
   margin: auto;
