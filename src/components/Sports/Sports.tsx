@@ -91,33 +91,54 @@ export class Sports extends Component<{}, {
           <div>
             <div ref={this.toolbar}>
               <div>
-                {
-                  ['Team', 'Price'].map(value => {
-                    const active = this.state?.sortByPrice ? value === 'Price' : value === 'Team'; 
-                    return (
-                      <a 
-                        key={value}
-                        className={active ? 'active' : ''}
-                        onClick={
-                          () => {
-                            if (active) {
-                              this.setState({
-                                sortByDescending: !this.state.sortByDescending
-                              });
-                            } else {
-                              this.setState({
-                                sortByDescending: false,
-                                sortByPrice: value === 'Price'
-                              });
+                <div>
+                  {
+                    ['Team', 'Price'].map(value => {
+                      const active = this.state?.sortByPrice ? value === 'Price' : value === 'Team'; 
+                      return (
+                        <a 
+                          key={value}
+                          className={active ? 'active' : ''}
+                          onClick={
+                            () => {
+                              if (active) {
+                                this.setState({
+                                  sortByDescending: !this.state.sortByDescending
+                                });
+                              } else {
+                                this.setState({
+                                  sortByDescending: false,
+                                  sortByPrice: value === 'Price'
+                                });
+                              }
                             }
                           }
-                        }
-                      >
-                        By {value} <FontAwesomeIcon icon={!this.state?.sortByDescending || !active ? faChevronUp : faChevronDown}/> 
-                      </a>
-                    ); 
-                  })
-                }
+                        >
+                          By {value} <FontAwesomeIcon icon={!this.state?.sortByDescending || !active ? faChevronUp : faChevronDown}/> 
+                        </a>
+                      ); 
+                    })
+                  }
+                </div>
+                <div>
+                  <span>
+                    Teams per page:
+                  </span>
+                  <select>
+                    {
+                      ['All', 10, 5].map(value => {
+                        return (
+                          <option
+                            key={value}
+                            value={value}
+                          >
+                            {value}
+                          </option>
+                        );
+                      }) 
+                    }
+                  </select>
+                </div>
               </div>
               <div>
                 <label>

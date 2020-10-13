@@ -21,6 +21,22 @@ div#sports > div:last-child {
       }
       & > div:first-child {
         display: flex;
+        flex-direction: column;
+        div {
+          display: flex;
+          align-items: center;
+          &:last-of-type {
+            margin-top: 26px;
+            span {
+              font-size: 21px;
+            }
+            * {
+              font-family: 'Padauk', sans-serif;
+              font-weight: 400;
+              color: $dark-grey;
+            }
+          }
+        }
         a {
           background: linear-gradient(#aeb0af, #717372, #8d8b8c);
           color: #ffffff;
@@ -42,7 +58,7 @@ div#sports > div:last-child {
           }
           &.active {
             background: linear-gradient(#fbfbfb, #f9f9f9, #d5d5d5);
-            color: black;
+            color: $dark-grey;
           }
           &:hover {
             @include box-shadow(3px 4px 7px -2px #000000);
@@ -60,6 +76,7 @@ div#sports > div:last-child {
           margin-top: 20px;
         }
         span {
+          color: $dark-grey;
           font-size: 18px;
           font-family: 'Padauk', sans-serif;
           font-weight: 400;
