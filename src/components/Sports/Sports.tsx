@@ -4,7 +4,7 @@ import {Hero} from "../Hero/Hero";
 import Slider from "react-rangeslider";
 import Axios from "axios";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronDown, faChevronUp} from "@fortawesome/free-solid-svg-icons";
+import {faChevronDown, faChevronUp, faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
 
 interface Team {
   abbreviation: string,
@@ -24,7 +24,9 @@ export class Sports extends Component<{}, {
   sortByPrice?: boolean,
   sortByDescending?: boolean,
   displayedSelectedPrice: number,
-  searchQuery?: string
+  searchQuery?: string,
+  teamsPerPage: string | number,
+  selectedPage: number,
 }> {
 
   private teamPrices = [99, 120, 92, 115, 134, 101, 123, 92, 89, 105, 112, 113, 121, 130, 110, 120, 108, 109, 107, 98, 85, 135, 143, 111, 118, 103, 134, 125, 104, 108];
@@ -32,7 +34,7 @@ export class Sports extends Component<{}, {
   private bottomContentTopMargin = 50;
   private maxPrice: number;
   private minPrice: number;
-  private teamsColumns: JSX.Element[] = [];
+  private teamsColumns: JSX.Element[][] = [];
   private sliderBeingUsed = false;
 
   constructor(props: {}) {
@@ -42,7 +44,9 @@ export class Sports extends Component<{}, {
     this.minPrice = Math.min(...this.teamPrices);
     this.state = {
       selectedPrice: this.maxPrice,
-      displayedSelectedPrice: this.maxPrice
+      displayedSelectedPrice: this.maxPrice,
+      teamsPerPage: 'All',
+      selectedPage: 0
     }
   }
 
@@ -76,6 +80,14 @@ export class Sports extends Component<{}, {
   }
 
   render() {
+    const teams = this.state?.teams?.slice().filter(team => {
+      const searchQuery = this.state?.searchQuery;
+      return team.price <= this.state?.selectedPrice && (!searchQuery || Object.values(team).filter(value => String(value).toLowerCase().includes(searchQuery.toLowerCase())).length);
+    });
+    let pages = 1;
+    if (teams && this.state.teamsPerPage !== 'All') {
+      pages = teams.length / (this.state.teamsPerPage as number);
+    } 
     return (
       <div id="sports">
         <Hero 
@@ -124,7 +136,14 @@ export class Sports extends Component<{}, {
                   <span>
                     Teams per page:
                   </span>
-                  <select>
+                  <select 
+                    value={this.state.teamsPerPage}
+                    onChange={value => {
+                      this.setState({
+                        teamsPerPage: value.target.value
+                      });
+                    }}
+                  >
                     {
                       ['All', 10, 5].map(value => {
                         return (
@@ -165,7 +184,8 @@ export class Sports extends Component<{}, {
                       onChangeComplete={() => {
                         this.sliderBeingUsed = false;
                         this.setState({
-                          selectedPrice: this.state?.displayedSelectedPrice
+                          selectedPrice: this.state?.displayedSelectedPrice,
+                          selectedPage: 0
                         });
                       }}
                     />
@@ -180,10 +200,6 @@ export class Sports extends Component<{}, {
                 (
                   () => {
                     if (!this.teamsColumns.length || !this.sliderBeingUsed) {
-                      const teams = this.state?.teams?.slice().filter(team => {
-                        const searchQuery = this.state?.searchQuery;
-                        return team.price <= this.state?.selectedPrice && (!searchQuery || Object.values(team).filter(value => String(value).toLowerCase().includes(searchQuery.toLowerCase())).length);
-                      });
                       if (this.state?.sortByPrice) {
                         teams?.sort((a, b) => a.price - b.price)
                       }
@@ -192,43 +208,101 @@ export class Sports extends Component<{}, {
                         if (this.state?.sortByDescending) {
                           teams.reverse();
                         }
-                        for (let i = 0; i < 2; i++) {
-                          this.teamsColumns.push(
-                            <div key={i}>
-                              {
-                                (
-                                  () => {
-                                    const teamDivs = [];
-                                    const halfOfTeamsLength = teams.length * 0.5;
-                                    const start = Math.ceil(halfOfTeamsLength * i);
-                                    const end = Math.ceil(halfOfTeamsLength * (i + 1));
-                                    for (let k = start; k < end; k++) {
-                                      const team = teams[k];
-                                      teamDivs.push(
-                                        <div key={k}>
-                                          <span>
-                                            {team?.full_name}
-                                          </span>
-                                          <span>
-                                            from <span>&#36;{team?.price}</span>
-                                          </span>
-                                        </div>
-                                      );
+                        for (let page = 0; page < pages; page++) {
+                          this.teamsColumns[page] = [];
+                          for (let i = 0; i < 2; i++) {
+                            this.teamsColumns[page].push(
+                              <div key={i}>
+                                {
+                                  (
+                                    () => {
+                                      const teamDivs = [];
+                                      const teamsPerPage = teams.length/pages;
+                                      const currentTeams = teams.slice(teamsPerPage * page, teamsPerPage * (page + 1));
+                                      const halfOfTeamsLength = currentTeams.length * 0.5;
+                                      const start = Math.ceil(halfOfTeamsLength * i);
+                                      const end = Math.ceil(halfOfTeamsLength * (i + 1));
+                                      for (let k = start; k < end; k++) {
+                                        const team = currentTeams[k];
+                                        teamDivs.push(
+                                          <div key={k}>
+                                            <span>
+                                              {team?.full_name}
+                                            </span>
+                                            <span>
+                                              from <span>&#36;{team?.price}</span>
+                                            </span>
+                                          </div>
+                                        );
+                                      }
+                                      return teamDivs;
                                     }
-                                    return teamDivs;
-                                  }
-                                )() 
-                              }
-                            </div>
-                          );
+                                  )() 
+                                }
+                              </div>
+                            );
+                          }
                         }
                       }
                     }
-                    return this.state?.teams ? this.teamsColumns : <h1>Loading</h1>;
+                    return this.state?.teams ? this.teamsColumns[this.state?.selectedPage] : <p>Loading teams...</p>;
                   }
                 )()
               }
             </div>
+            {
+              teams?.length
+              ?
+              <div>
+                <a onClick={() => {
+                  const previousPage = this.state.selectedPage - 1;
+                  if (previousPage > -1) {
+                    this.setState({
+                      selectedPage: previousPage 
+                    });
+                  }
+                }}>
+                  <FontAwesomeIcon icon={faChevronLeft} />
+                </a>
+                {
+                  (
+                    () => {
+                      const pageButtons = [];
+                      for (let i = 0; i < pages; i++) {
+                        pageButtons.push(
+                          <a 
+                            className={this.state.selectedPage === i ? 'active' : ''}
+                            key={i}
+                            onClick={() => {
+                              this.setState({
+                                selectedPage: i
+                              });
+                            }}
+                          >
+                            {i + 1}
+                          </a>
+                        );
+                      }
+                      return pageButtons;
+                    }
+                  )()
+                }
+                <a onClick={() => {
+                  const nextPage = this.state.selectedPage + 1;
+                  if (nextPage < pages) {
+                    this.setState({
+                      selectedPage: nextPage 
+                    });
+                  }
+                }}>
+                  <FontAwesomeIcon icon={faChevronRight} />
+                </a>
+              </div>
+              :
+              <p>
+                No teams match your options.
+              </p>
+            }
           </div>
           <div style={this.state?.adStyle}>
             Placeholder for promotional messaging

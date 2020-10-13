@@ -490,6 +490,9 @@ select {
   cursor: pointer;
   @include box-shadow($interactive-shadow);
   @include interactive-transition;
+  option {
+    cursor: pointer;
+  }
   &:hover {
     @include box-shadow($interactive-shadow-hover);
     background: darken($background, 6)

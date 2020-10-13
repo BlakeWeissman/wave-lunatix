@@ -1,4 +1,11 @@
 @import "../../index.scss";
+p {
+  color: #122c47;
+  text-align: center;
+  font-family: 'Padauk', sans-serif;
+  font-weight: 400;
+  width: 100%;
+}
 
 div#sports > div:last-child {
   display: flex;
@@ -135,7 +142,7 @@ div#sports > div:last-child {
         }
       }
     }
-    & > div:last-child {
+    & > div:nth-child(2) {
       display: flex;
       justify-content: space-between;
       @include mobile {
@@ -165,6 +172,39 @@ div#sports > div:last-child {
             font-weight: 700;
             font-size: 20px;
           }
+        }
+      }
+    }
+    & > div:last-child {
+      width: 100%;
+      display: flex;
+      margin-top: 56px;
+      justify-content: center;
+      a {
+        $icon-margin: 20px;
+        $color: #122c47;
+        font-family: 'Padauk', sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        cursor: pointer;
+        margin: 0 2px;
+        color: $color;
+        padding: 1px 8px;
+        padding-top: 4px;
+        border-radius: 5px;
+        user-select: none;
+        @include interactive-transition;
+        &:first-child {
+          margin: 0;
+          margin-right: $icon-margin;
+        }
+        &:last-child {
+          margin: 0;
+          margin-left: $icon-margin;
+        }
+        &.active, &:hover {
+          background: $color;
+          color: #ffffff;
         }
       }
     }
