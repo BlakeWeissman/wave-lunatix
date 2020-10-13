@@ -66,7 +66,7 @@ export class App extends Component<{}, {
     });
     const breakpoint = 1030;
     window.addEventListener('resize', () => {
-      if ((this.lastActivatedBreakpoint >= breakpoint && window.innerWidth < this.lastActivatedBreakpoint) || this.lastActivatedBreakpoint <= breakpoint && window.innerWidth > this.lastActivatedBreakpoint) {
+      if ((this.lastActivatedBreakpoint >= breakpoint && window.innerWidth < this.lastActivatedBreakpoint) || (this.lastActivatedBreakpoint <= breakpoint && window.innerWidth > this.lastActivatedBreakpoint)) {
         this.lastActivatedBreakpoint = window.innerWidth;
         this.setSitePadding();
       }
@@ -79,7 +79,7 @@ export class App extends Component<{}, {
           ref={this.navbar}>
           <div>
             <Link to="/">
-              <img src={require('./assets/logo.png')} />
+              <img src={require('./assets/logo.png')} alt="logo" />
             </Link>
             <div ref={this.navbarWrap} id="nav-wrapper">
               <div>
@@ -291,13 +291,15 @@ export class App extends Component<{}, {
               <div id="apps">
                 <a 
                   href="https://www.apple.com/app-store/" 
-                  target="_blank">
-                  <img src={require('./assets/apple.jpg')} />        
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  <img src={require('./assets/apple.jpg')} alt="App Store" />        
                 </a>
                 <a 
                   href="https://play.google.com/store" 
+                  rel="noopener noreferrer"
                   target="_blank">
-                  <img src={require('./assets/google.jpg')} />        
+                  <img src={require('./assets/google.jpg')} alt="Google Play Store" />        
                 </a>
               </div>
               <LargeInput 
@@ -309,8 +311,9 @@ export class App extends Component<{}, {
                 </p>
                 <a 
                   href="https://venmo.com/"
+                  rel="noopener noreferrer"
                   target="_blank">
-                  <img src={require('./assets/venmo.png')} />        
+                  <img src={require('./assets/venmo.png')} alt="Venmo Logo" />        
                 </a>
               </div>
               <p>
@@ -319,16 +322,19 @@ export class App extends Component<{}, {
               <div id="social">
                 <a
                   href="https://twitter.com/"
+                  rel="noopener noreferrer"
                   target="_blank">
                   <FontAwesomeIcon icon={faTwitter} />
                 </a>
                 <a
                   href="https://facebook.com/"
+                  rel="noopener noreferrer"
                   target="_blank">
                   <FontAwesomeIcon icon={faFacebookF} />
                 </a>
                 <a
                   href="https://instagram.com"
+                  rel="noopener noreferrer"
                   target="_blank">
                   <FontAwesomeIcon icon={faInstagram} />
                 </a>
