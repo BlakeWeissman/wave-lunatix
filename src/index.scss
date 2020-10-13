@@ -33,9 +33,14 @@
   -webkit-box-shadow: $value;
 }
 
-$site-padding: 30px;
-$max-width: 1065px + $site-padding;
+@mixin mobile {
+  @media (max-width: 1030px) {
+    @content;
+  }
+}
 
+$site-padding: 30px;
+$max-width: 1100px + $site-padding;
 $red: #e53422;
 $grey: #717372;
 

@@ -8,7 +8,7 @@ $border-radius: 15px;
   height: 58px;
   border-radius: $border-radius;
   position: relative;
-  width: 600px;
+  max-width: 600px;
   div:first-of-type {
     position: absolute;
     z-index: 0;
@@ -45,5 +45,10 @@ $border-radius: 15px;
     padding: 0px 24px 0px 18px;
     display: flex;
     align-items: center;
+  }
+  @include mobile {
+    a, span, input {
+      font-size: 17px !important;
+    }
   }
 }
