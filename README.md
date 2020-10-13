@@ -2,7 +2,13 @@
 
 
 ### Develop
-In the project directory, you can run:
+
+Run:
+```bash
+$ npm install
+```
+
+To run the project locally, use:
 
 ```bash
 $ npm start
@@ -20,6 +26,13 @@ $ npm run build
 
 Builds the app for production to the `build` folder.<br />
 
+### Deploy with GitHub pages
+
+To deploy to GitHub pages, run:
+
+```bash
+$ npm run deploy
+```
 
 ### Deploy with Docker
 In the project directory, run the following command to build the docker container:
